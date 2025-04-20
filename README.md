@@ -5,9 +5,6 @@ This website is a reflection of my skills, projects, and experiences as a softwa
 
 ## 🌐 Live Website
 
-👉 [View Portfolio](https://yourusername.github.io/your-repo-name/)  
-*(Replace this link with your actual GitHub Pages or hosting link)*
-
 ---
 
 ## 📋 About Me

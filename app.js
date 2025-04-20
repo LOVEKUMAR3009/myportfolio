@@ -1,38 +1,27 @@
 const sections = document.querySelectorAll('.section');
-const secbtns= document.querySelectorAll('.controlls');
-const secbtn = document.querySelectorAll('.control');
-const allsections = document.querySelector('.main-content');
+const controlButtons = document.querySelectorAll('.control');
 
-function PageTransitionEvent(){
+function PageTransitionEvent() {
+  controlButtons.forEach((btn) => {
+    btn.addEventListener('click', function () {
+      const id = this.dataset.id;
 
-  for(let i = 0;i<secbtn.length;i++){
-    secbtn[i].addEventListener('click',function(){
-      let currentbtn = document.querySelectorAll('.active-btn');
-      currentbtn[0].className = currentbtn[0].className.replace('active-btn','');
-      this.className+='active-btn';
-    })
-  }
+      // If already active, don't do anything
+      if (this.classList.contains('active-btn')) return;
 
-  // sections active class
+      // Remove active-btn from all buttons
+      controlButtons.forEach((b) => b.classList.remove('active-btn'));
+      this.classList.add('active-btn');
 
-  allsections.addEventListener('click',(e)=>{
-    const id = e.target.dataset.id;
-    if(id){
-      //remove selected from the other btns
-      sections.forEach((btn)=>{
-        btn.classList.remove('active');
-      })
-      e.target.classList.add('active');
-      
+      // Remove active from all sections
+      sections.forEach((section) => section.classList.remove('active'));
 
-      // hide other sections
-      sections.forEach((section)=>{
-        section.classList.remove('active');
-      });
-
-      const element = document.getElementById(id);
-      element.classList.add('active');
-    }
+      // Add active to the targeted section
+      const targetSection = document.getElementById(id);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+    });
   });
 }
 
